@@ -1,35 +1,55 @@
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-const count = document.getElementById("input1");
-const dartsI = document.getElementById("dartsI");
-const dartsA = document.getElementById("dartsA");
+let canvas, ctx, count, dartsI, dartsA;
 
-let interval;
-let dartCount;
-let dartIdx = 0;
-let dartsInside = 0;
-let dartsAll = 0;
-let running = true;
+let interval, dartCount, dartIdx, dartsInside, dartsAll, running;
+
+let offX = 100; //x offset
+let offY = 75; //y offset
 
 function init () {
+    canvas = document.getElementById("canvas");
+    ctx = canvas.getContext("2d");
+    count = document.getElementById("input1");
+    dartsI = document.getElementById("dartsI");
+    dartsA = document.getElementById("dartsA");
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
+    dartIdx = 0;
+    dartsInside = 0;
+    dartsAll = 0;
+    running = true;
+    try {
+        clearInterval(interval);
+    } catch (err) {
+        console.log(err);
+    }
+
+    updateFields();
+
+    ctx.fillStyle = "white";
+    ctx.fillRect(offX, offY, 400, 400);
 
     ctx.strokeStyle = "red";
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(400, 250, 200, 0, 2 * Math.PI);
+    ctx.arc(offX + 200, offY + 200, 200, 0, 2 * Math.PI);
     ctx.stroke();
 
     ctx.strokeStyle = "black";
+    ctx.lineWidth = 3;
     ctx.beginPath();
-    ctx.rect(200, 50, 400, 400);
+    ctx.rect(offX, offY, 400, 400);
     ctx.stroke();
 }
 
 function startDraw () {
+    init();
+
     dartCount = parseInt(count.value);
     interval = setInterval(drawDotPackage, 1);
+
+    console.log(dartCount);
 }
 
 function drawDotPackage () {
@@ -42,10 +62,10 @@ function drawDotPackage () {
 function drawDot () {
     if (dartIdx < dartCount) {
         dartIdx++;
-        let x = randomRange(200, 600);
-        let y = randomRange(50, 450);
-        let a = 400 - x;
-        let b = 250 - y;
+        let x = randomRange(offX, offX + 400);
+        let y = randomRange(offY, offY + 400);
+        let a = (offX + 200) - x;
+        let b = (offY + 200) - y;
         let dist = Math.abs(Math.sqrt(a * a + b * b));
 
         if (dist <= 200) {

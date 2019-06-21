@@ -1,0 +1,45 @@
+#content {
+    position: relative;
+    left: 600px;
+    top: -810px;
+}
+
+#button1 {
+    position: relative;
+    left: 50px;
+    background-color: #00bd2f;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 20px;
+    border: 2px solid #00bd2f;
+
+    /* button transitions */
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#button1:hover {
+    background-color: #00bd2f;
+    border: 2px solid #292929;
+}
+
+#dartsI {
+    position: relative;
+    left: 13px;
+}
+
+#dartsA {
+    position: relative;
+    left: 2px;
+}
+
+.text {
+    color: #ffffff;
+}
+
+body {
+    background-color: #4f4f4f;
+}
