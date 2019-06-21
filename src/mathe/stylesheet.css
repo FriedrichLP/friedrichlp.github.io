@@ -2,6 +2,7 @@
     position: relative;
     left: 600px;
     top: -810px;
+    width: 50%;
 }
 
 #button1 {
@@ -34,6 +35,63 @@
 #dartsA {
     position: relative;
     left: 2px;
+}
+
+.circleSelection .checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.circleSelection .checkmark {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #d40000;
+}
+
+.circleSelection .checkmark-label {
+    position: absolute;
+    top: 60px;
+    left: 30px;
+}
+
+.circleSelection:hover .checkbox:checked ~ .checkmark {
+    background-color: #008b23;
+}
+
+.circleSelection:hover .checkbox ~ .checkmark {
+    background-color: #aa0000;
+}
+
+.circleSelection .checkbox:checked ~ .checkmark {
+    background-color: #00bd2f;
+}
+
+.circleSelection .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.circleSelection .checkbox:checked ~ .checkmark:after {
+    display: block;
+}
+
+.circleSelection .checkmark:after {
+    left: 8px;
+    top: 3px;
+    width: 8px;
+    height: 16px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .text {

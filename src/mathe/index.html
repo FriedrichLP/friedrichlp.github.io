@@ -38,7 +38,13 @@
         <div id="content">
             <p class="text">Anzahl an Darts:
             <input id="input1" type="text">
-            <button id="button1", onclick="startDraw()">Werfen</button><br><br><br>
+            <button id="button1", onclick="startDraw()">Werfen</button>
+            <div class="circleSelection" onclick="toggleDrawCircle()">
+                <input class="checkbox" id="drawCircle" type="checkbox" checked>
+                <label class="checkmark-label" for="drawCircle">Kreis Zeichnen</label>
+                <span class="checkmark"></span>
+            </div>
+            <br><br><br><br>
             <p class="text">Darts im Kreis:   
             <input id="dartsI" type="text"><br>
             <p class="text">Darts geworfen: 

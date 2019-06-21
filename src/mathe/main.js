@@ -1,7 +1,7 @@
 let canvas, ctx, count, dartsI, dartsA;
-
 let interval, dartCount, dartIdx, dartsInside, dartsAll, running;
 
+let drawCircle = true;
 let offX = 100; //x offset
 let offY = 75; //y offset
 
@@ -30,11 +30,13 @@ function init () {
     ctx.fillStyle = "white";
     ctx.fillRect(offX, offY, 400, 400);
 
-    ctx.strokeStyle = "red";
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.arc(offX + 200, offY + 200, 200, 0, 2 * Math.PI);
-    ctx.stroke();
+    if (drawCircle) {
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(offX + 200, offY + 200, 200, 0, 2 * Math.PI);
+        ctx.stroke();
+    }
 
     ctx.strokeStyle = "black";
     ctx.lineWidth = 3;
@@ -84,6 +86,11 @@ function drawDot () {
         clearInterval(interval);
         running = false;
     }
+}
+
+function toggleDrawCircle () {
+    drawCircle = document.getElementById("drawCircle").checked;
+    init();
 }
 
 function updateFields () {
